@@ -1,0 +1,66 @@
+.available_meals-container {
+  max-height: 73vh;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #dddddd;
+  border-bottom: 2px solid #dddddd;
+  overflow: hidden;
+  position: relative;
+}
+
+.meal {
+  height: calc(100% / 3.27);
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  margin: 0.6rem 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 4px solid #dddddd;
+}
+
+.meal:nth-last-child() {
+  border: none;
+}
+
+.meal img {
+  width: 30%;
+  margin-right: 1rem;
+}
+
+/* .meal__details {
+  display: flex;
+  flex-direction: column;
+} */
+
+.food {
+  display: flex;
+  flex-direction: column;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.meal__type {
+  font-size: 0.8rem;
+}
+
+.meal__title {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 3rem;
+}
+
+button {
+  background: none;
+  border: 1px solid rgb(40, 147, 223);
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+}
