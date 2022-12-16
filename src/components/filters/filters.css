@@ -19,6 +19,12 @@
   padding: 0.4rem 1.8rem;
 }
 
+.tags:hover {
+  border: 1px solid rgb(53, 105, 226);
+  color: rgb(26, 80, 208);
+  background-color: rgb(220, 230, 255);
+}
+
 @media screen and (max-width: 600px) {
   .filter-container {
     height: 10vh;

@@ -60,7 +60,13 @@ strong {
 
 button {
   background: none;
-  border: 1px solid rgb(40, 147, 223);
+  border: 1px solid rgb(53, 105, 226);
+  color: rgb(26, 80, 208);
   padding: 0.5rem 1.5rem;
   border-radius: 5px;
+}
+
+button:hover {
+  background-color: rgb(13, 54, 160);
+  color: white;
 }

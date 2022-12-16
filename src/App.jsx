@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Filters from './components/filters/Filters';
 import AvailableMeals from './components/availableMeals/AvailableMeals';

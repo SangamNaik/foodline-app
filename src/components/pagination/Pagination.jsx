@@ -1,16 +1,17 @@
 import React from 'react';
 import { paginationData } from '../../action';
 import './Pagination.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.paginationData);
+  // const { data } = useSelector((state) => state.data);
 
   const fetchPage = (e) => {
     dispatch(paginationData(e.target.innerText));
   };
 
+  // const { data: paginatedData } = useSelector((state) => state.paginatedData);
   return (
     <div className="pagination-container">
       <button onClick={fetchPage} className="page">

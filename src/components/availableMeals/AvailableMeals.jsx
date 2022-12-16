@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import './AvailableMeals.css';
 
 const AvailableMeals = ({ meals }) => {
-  const [updatedMeals, setUpdatedMeals] = useState([]);
+  // const [updatedMeals, setUpdatedMeals] = useState([]);
   const [mealsToShow, setMealsToShow] = useState([]);
 
   useEffect(() => {
     setMealsToShow(meals.slice(0, 3));
   }, [meals]);
 
-  const { data: paginationData } = useSelector((state) => state.paginationData);
+  const { data: paginationData } = useSelector((state) => state.paginatedData);
 
   // useEffect(() => {
   //   (() => {
@@ -66,7 +66,7 @@ const AvailableMeals = ({ meals }) => {
                 </div>
               </div>
               <div className="price">
-                <span>{item.price}</span>
+                <span>${item.price}</span>
                 <button>Select</button>
               </div>
             </article>
