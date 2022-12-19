@@ -79,7 +79,7 @@ const AvailableMeals = () => {
                 <div className="drink">
                   {item.drinks &&
                     item.drinks.map((item) => (
-                      <span key={item.id}>{item.title}</span>
+                      <span key={item.id}>{item.title} </span>
                     ))}
                 </div>
               </div>
