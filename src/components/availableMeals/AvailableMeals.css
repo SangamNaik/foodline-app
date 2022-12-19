@@ -70,3 +70,7 @@ button:hover {
   background-color: rgb(13, 54, 160);
   color: white;
 }
+
+p {
+  text-align: center;
+}

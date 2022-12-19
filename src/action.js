@@ -19,23 +19,39 @@ export const getData = () => async (dispatch) => {
   }
 };
 
-export const paginationData = (page) => async (dispatch) => {
+export const getPage =
+  (page = 1) =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: 'pageRequest',
+      });
+
+      dispatch({
+        type: 'pageSuccess',
+        payload: page,
+      });
+    } catch (error) {
+      dispatch({
+        type: 'pageFailure',
+        payload: error.response.data.message,
+      });
+    }
+  };
+
+export const getFilter = (filter) => async (dispatch) => {
   try {
     dispatch({
-      type: 'paginationDataRequest',
+      type: 'filterRequest',
     });
 
-    const {
-      data: { meals },
-    } = await axios.get('data.json');
-    // let paginationData = data.meals((page - 1) * 3, page * 3);
     dispatch({
-      type: 'paginationDataSuccess',
-      payload: meals.slice((page - 1) * 3, page * 3),
+      type: 'filterSuccess',
+      payload: filter,
     });
   } catch (error) {
     dispatch({
-      type: 'paginationDataFailure',
+      type: 'filterFailure',
       payload: error.response.data.message,
     });
   }

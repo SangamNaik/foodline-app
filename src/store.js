@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import dataReducer, { paginationDataReducer } from './reducer';
+import dataReducer, { filterReducer, pageNumberReducer } from './reducer';
 
 const store = configureStore({
   reducer: {
     data: dataReducer,
-    paginatedData: paginationDataReducer,
+    pageNumber: pageNumberReducer,
+    filter: filterReducer,
   },
 });
 

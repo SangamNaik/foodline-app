@@ -1,41 +1,59 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getData } from '../../action';
 import './AvailableMeals.css';
 
-const AvailableMeals = ({ meals }) => {
-  // const [updatedMeals, setUpdatedMeals] = useState([]);
+const AvailableMeals = () => {
   const [mealsToShow, setMealsToShow] = useState([]);
+  const [filter, setFilter] = useState('All');
+  const [page, setPage] = useState(1);
+
+  const dispatch = useDispatch();
+
+  const pageNumber = useSelector((state) => state.pageNumber);
+  useEffect(() => {
+    if (pageNumber.data.length > 0) {
+      setPage(+pageNumber.data);
+    }
+  }, [dispatch, pageNumber]);
 
   useEffect(() => {
-    setMealsToShow(meals.slice(0, 3));
-  }, [meals]);
+    dispatch(getData());
+  }, [dispatch]);
 
-  const { data: paginationData } = useSelector((state) => state.paginatedData);
+  const {
+    data: { meals },
+  } = useSelector((state) => state.data);
 
-  // useEffect(() => {
-  //   (() => {
-  //     setUpdatedMeals(paginationData);
-  //   })();
-  // }, [paginationData]);
+  const selectedFilter = useSelector((state) => state.filter);
+  useEffect(() => {
+    if (selectedFilter.data.length > 0) {
+      setFilter(selectedFilter.data);
+    }
+  }, [dispatch, selectedFilter]);
 
-  console.log(paginationData);
-  // console.log(meals);
-  // console.log(updatedMeals);
+  useEffect(() => {
+    if (meals) {
+      if (filter === 'All') {
+        setMealsToShow(meals);
+      } else {
+        setMealsToShow(
+          meals.filter((meal) => meal.labels[0] === filter.toLowerCase())
+        );
+      }
+    }
+  }, [meals, filter]);
 
-  // useEffect(() => {
-  //   if (
-  //     meals.length > 0 &&
-  //     updatedMeals.length > 0 &&
-  //     meals[0].id === updatedMeals[0].id
-  //   ) {
-  //     setMealsToShow(updatedMeals);
-  //   } else {
-  //     setMealsToShow(meals);
-  //   }
-  // }, [meals, updatedMeals]);
+  useEffect(() => {
+    if (meals) {
+      setMealsToShow(meals.slice((page - 1) * 3, page * 3));
+    }
+  }, [meals, page]);
 
   return (
     <div className="available_meals-container">
+      {mealsToShow.length > 0 ? '' : <p>No Meals</p>}
+
       {mealsToShow &&
         mealsToShow.map((item) => {
           return (

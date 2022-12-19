@@ -24,3 +24,9 @@
   color: rgb(21, 0, 255);
   border: 1px solid rgb(92, 78, 242);
 }
+
+.active {
+  background-color: rgb(184, 204, 255);
+  color: rgb(21, 0, 255);
+  border: 1px solid rgb(92, 78, 242);
+}

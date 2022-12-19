@@ -1,31 +1,29 @@
 import React from 'react';
-import { paginationData } from '../../action';
 import './Pagination.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPage } from './../../action';
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  // const { data } = useSelector((state) => state.data);
+  const { data } = useSelector((state) => state.data);
+
+  const { meals } = data;
 
   const fetchPage = (e) => {
-    dispatch(paginationData(e.target.innerText));
+    dispatch(getPage(e.target.innerText));
   };
 
-  // const { data: paginatedData } = useSelector((state) => state.paginatedData);
   return (
     <div className="pagination-container">
-      <button onClick={fetchPage} className="page">
-        1
-      </button>
-      <button onClick={fetchPage} className="page">
-        2
-      </button>
-      <button onClick={fetchPage} className="page">
-        3
-      </button>
-      <button onClick={fetchPage} className="page">
-        4
-      </button>
+      {meals &&
+        meals.length > 3 &&
+        [...Array(Math.ceil(meals.length / 3))].map((_, i) => {
+          return (
+            <button onClick={fetchPage} className="page" key={i + 1}>
+              {i + 1}
+            </button>
+          );
+        })}
     </div>
   );
 };
